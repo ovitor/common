@@ -1,0 +1,6 @@
+---
+
+- name: start qemu-guest-agent
+  systemd:
+    state: started
+    name: qemu-guest-agent

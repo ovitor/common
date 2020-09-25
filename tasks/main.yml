@@ -1,0 +1,5 @@
+---
+# tasks file for common
+
+- name: start qemu-guest-agent
+  import_tasks: qemu-ga.yml
