@@ -1,2 +1,6 @@
 ---
 # vars file for common
+
+vars:
+  create_user: false
+  user_password: agente

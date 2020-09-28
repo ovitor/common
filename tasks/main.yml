@@ -1,5 +1,12 @@
 ---
 # tasks file for common
 
+- name: start update system
+  import_tasks: update-system.yml
+
 - name: start qemu-guest-agent
   import_tasks: qemu-ga.yml
+
+- name: create agent user
+  import_tasks: agent-user.yml
+  when: create_user is true

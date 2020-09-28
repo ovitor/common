@@ -1,0 +1,10 @@
+---
+
+- name: update source list cache
+  apt:
+    update_cache: yes
+
+- name: update all packages installed
+  apt:
+    name: "*"
+    state: latest

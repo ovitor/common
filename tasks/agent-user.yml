@@ -1,0 +1,32 @@
+---
+
+- name: create 'wheel' group
+  group:
+    name: wheel
+    state: present
+
+- name: wheel group have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    validate: visudo -cf %s
+
+- name: create agent user
+  user:
+    name: agente
+    groups:
+      - adm
+      - sudo
+      - wheel
+    append: true
+    shell: /bin/bash
+    generate_ssh_key: true
+    ssh_key_file: .ssh/id_rsa
+
+- name: adding new public keys
+  authorized_key:
+    user: agente
+    state: present
+    key: "{{ lookup('file', '{{ user_ssh_public_key }}') }}"

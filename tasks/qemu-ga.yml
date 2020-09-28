@@ -1,5 +1,10 @@
 ---
 
+- name: ensure qemu-guest-agent is installed
+  apt:
+    name: qemu-guest-agent
+    state: present
+
 - name: start qemu-guest-agent
   systemd:
     state: started
