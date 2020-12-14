@@ -1,9 +1,6 @@
 ---
 # tasks file for common
 
-- name: start update system
-  import_tasks: update-system.yml
-
 - name: start qemu-guest-agent
   import_tasks: qemu-ga.yml
 
